@@ -5,6 +5,8 @@
 #ifndef ROOM_H
 #define ROOM_H
 
+#include <vector>
+
 #include "Item.h"
 
 class Room {
@@ -12,7 +14,7 @@ class Room {
   //Constructor & Destructor
   Room(char* name, char* desc, map<char*, Room*>);
   ~Room();
-  
+
   //Setters and Getters
   void setDesc(char*);
   void addItem(Item*);
@@ -20,9 +22,9 @@ class Room {
   char* getName();
   char* getDesc();
   vector<Item*>* getItems();
-  map<char*, Room*>* getExits();
-  
-  
+  map<Room*> getExits();
+
+
  private:
   char* name;
   char* desc;
