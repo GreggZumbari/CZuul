@@ -16,6 +16,9 @@ class Room {
         ~Room();
 
     private:
+        char* name;
+        char* description;
+        Room* exits;
 };
 
 #endif
