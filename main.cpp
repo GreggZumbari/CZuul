@@ -37,7 +37,7 @@ int main() {
     cout << "All beings in this world have a SPECIAL POWER." << endl <<
     "Yours is the ability to SHIFT!" << endl << endl;
     wait(4000);
-    cout << "From a small child, you have owned several cats, and have learned their secrets." << endl << 
+    cout << "From a small child, you have owned several cats, and have learned their secrets." << endl <<
     "Because of this, you are able to transform into a cat at will." << endl << endl;
     wait(4000);
     cout << "Your name is Irene, and you are tired of your friend, Gregg, being alive," << endl <<
@@ -76,16 +76,16 @@ int main() {
             cout << endl << "-----" << endl;
         }
 
+        //If the player typed "help"
+        else if (strcmp("help", cmd) == 0 || cmd[0] == 'h') {
+              printCommands();
+        }
+
         //If the player typed "exit"
         else if (strcmp("exit", cmd) == 0 || strcmp("quit", cmd) == 0 || cmd[0] == 'q') {
               //Kill the program
               cout << "Okay, bye!" << endl << "Quitting game..." << endl;
               return 0;
-        }
-
-        //If the player typed "help"
-        else if (strcmp("help", cmd) == 0 || cmd[0] == 'h') {
-              printCommands();
         }
 
         //If the player typed an invalid command
@@ -100,6 +100,6 @@ int main() {
 void printCommands() {
     cout << "Commands:" << endl << "move - Moves your character to an adjacent room" << endl <<
     "shift - Transform into your true state" << endl <<
-    "quit - Ends the game. Game cannot be saved, so this deletes your progress" << endl <<
-    "help - Lists all possible commands (which is what you're reading right now!)" << endl;
+    "help - Lists all possible commands (which is what you're reading right now!)" << endl <<
+    "quit - Ends the game. Game cannot be saved, so this deletes your progress" << endl;
 }
