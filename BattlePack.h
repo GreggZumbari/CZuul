@@ -5,16 +5,15 @@ Hi. I'm Greggory Hickman, and these are some helpful methods to use in your C++ 
 Greggory Hickman, September 2019 - September 2020
 */
 
-#include <iostream>
 #include <cstring>
 #include <math.h>
 
 #define LEN 100
 #define BIGLEN 3000
 
-using namespace std;
 /*
 Clears all data from a cstring. Can be used to empty out a previously used cstring, or to clear any random RAM still present inside.
+"int len" should be set to the length of the char*
 @author Greggory Hickman, February 2020
 */
 void clearCString(char*& in, int len) {
@@ -25,6 +24,7 @@ void clearCString(char*& in, int len) {
 
 /*
 Clears all data from an int array. Can be used to empty out a previously used array, or to clear any random RAM still present inside.
+"int len" should be set to the length of the int*
 @author Greggory Hickman, February 2020
 */
 void clearIntArray(int*& in, int len) {

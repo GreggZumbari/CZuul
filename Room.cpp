@@ -1,10 +1,12 @@
 #include "Room.h"
+#include "BattlePack.h"
 
 //Constructor - Set name, description, and map
 Room::Room(char* name) {
     this->name = name;
-    description = "DESCRIPTION GOES HERE"
-    exits = new *Room[MAXEXITCOUNT];
+    description = new char[MAX_DESC_LENGTH];
+    strcpy(description, "DESCRIPTION");
+    exits = new Room*[MAX_EXIT_COUNT];
     exitCount = 0;
 }
 
@@ -35,8 +37,8 @@ void Room::addExit(Room* exit) {
 //Remove an exit from this room
 void Room::removeExit(char* name) {
     for (int i = 0; i < exitCount; i++) { //For each exit
-        if (exits[i].getName() = name) { //If this exit has the same name as the one foretold by the prophecy
-            exits[i] = NULL; //Delete that room's pointer
+        if (name) { //If this exit's name and the name passed in match...
+            exits[i] = NULL; //...then delete that room's pointer
 
             //Move the remaining rooms one to the left to patch the hole left by the deleted room
             for (int j = i + 1; j < exitCount; j++) {
@@ -71,9 +73,23 @@ char* Room::getDesc() {
     return description;
 }
 
-//Return a list of rooms
-Room* Room::getExits() {
-    return map;
+//Return the list of exits (type Room*)
+Room** Room::getExits() {
+    return exits;
+}
+
+//Return a list of the exit names separated by commas and spaces
+char* Room::getExitNames() {
+    const int EXIT_LIST_LENGTH = MAX_EXIT_LENGTH * (exitCount + 1); //MAX_EXIT_LENGTH * (exitCount + 1) is an over-estimate of how much space will need to be allocated for this char*, in order to avoid allocating too much more than is needed
+
+    char* exitList = new char[EXIT_LIST_LENGTH]; //Will contain the list of all exits
+    clearCString(exitList, EXIT_LIST_LENGTH); //Clear exitList of stray data
+
+    for (int i = 0; i < exitCount; i++) {
+        strcat(exitList, exits[i]->getName()); //Slap the exit's name on the end of the char*...
+        strcat(exitList, ", "); //...followed by a comma and a space
+    }
+    return exitList;
 }
 
 //Return the vector pointer of the room's items
