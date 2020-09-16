@@ -1,5 +1,5 @@
 #include "Room.h"
-#include "BattlePack.h"
+//#include "BattlePack.h"
 
 //Constructor - Set name, description, and map
 Room::Room(char* name) {
@@ -83,7 +83,9 @@ char* Room::getExitNames() {
     const int EXIT_LIST_LENGTH = MAX_EXIT_LENGTH * (exitCount + 1); //MAX_EXIT_LENGTH * (exitCount + 1) is an over-estimate of how much space will need to be allocated for this char*, in order to avoid allocating too much more than is needed
 
     char* exitList = new char[EXIT_LIST_LENGTH]; //Will contain the list of all exits
-    clearCString(exitList, EXIT_LIST_LENGTH); //Clear exitList of stray data
+    for (int i = 0; i < EXIT_LIST_LENGTH; i++) { //Clear exitList of stray data
+		exitList[i] = (char)0;
+	}
 
     for (int i = 0; i < exitCount; i++) {
         strcat(exitList, exits[i]->getName()); //Slap the exit's name on the end of the char*...

@@ -1,19 +1,18 @@
 //BattlePack.h
 /*
 Hi. I'm Greggory Hickman, and these are some helpful methods to use in your C++ code.
-
 Greggory Hickman, September 2019 - September 2020
 */
 
 #include <cstring>
 #include <math.h>
 
-#define LEN 100
-#define BIGLEN 3000
+#define BLEN 100
+#define BBIGLEN 3000
 
 /*
 Clears all data from a cstring. Can be used to empty out a previously used cstring, or to clear any random RAM still present inside.
-"int len" should be set to the length of the char*
+"int BLEN" should be set to the BLENgth of the char*
 @author Greggory Hickman, February 2020
 */
 void clearCString(char*& in, int len) {
@@ -24,7 +23,7 @@ void clearCString(char*& in, int len) {
 
 /*
 Clears all data from an int array. Can be used to empty out a previously used array, or to clear any random RAM still present inside.
-"int len" should be set to the length of the int*
+"int BLEN" should be set to the BLENgth of the int*
 @author Greggory Hickman, February 2020
 */
 void clearIntArray(int*& in, int len) {
@@ -40,12 +39,12 @@ This method uses the clearCString method which can be seen above. Please keep th
 @author Greggory Hickman, February 2020
 */
 int* stringToInt(char* charList, char separator) {
-	char* current = new char[LEN];
-	int* numList = new int[LEN];
+	char* current = new char[BLEN];
+	int* numList = new int[BLEN];
 
 	//Clear pesky leftover ram from pointer arrays
-	clearCString(current, LEN);
-	clearIntArray(numList, LEN);
+	clearCString(current, BLEN);
+	clearIntArray(numList, BLEN);
 
 	//cout << "Starting charList: " << charList << endl;
 	//cout << "Starting current: " << current << endl;
@@ -53,9 +52,9 @@ int* stringToInt(char* charList, char separator) {
 	//Parse the input
 	int j = 0; //Iterator for current
 	int k = 0; //Iterator for numList
-	for (int i = 0; i < BIGLEN + 1; i++) {
+	for (int i = 0; i < BBIGLEN + 1; i++) {
 		//If we have hit the 100 number max limit
-		if (k >= LEN - 1) {
+		if (k >= BLEN - 1) {
 			break;
 		}
 		//If is number
@@ -81,7 +80,7 @@ int* stringToInt(char* charList, char separator) {
 				j = 0;
 				k++;
 
-				clearCString(current, LEN);
+				clearCString(current, BLEN);
 			}
 		}
 		//If is null
